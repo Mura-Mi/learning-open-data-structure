@@ -14,7 +14,7 @@ class Node<T> {
     }
 }
 
-public class SLList<T> implements List<T> {
+public class SLList<T> implements List<T>, Stack<T> {
     private Node<T> head;
     private Node<T> tail;
 
@@ -87,5 +87,15 @@ public class SLList<T> implements List<T> {
     @Override
     public int capacity() {
         return this.size();
+    }
+
+    @Override
+    public void push(T t) {
+        this.enqueueHead(t);
+    }
+
+    @Override
+    public T pop() {
+        return this.dequeueHead();
     }
 }
