@@ -1,10 +1,12 @@
 package yokohama.murataku.ods;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.util.Random;
 
+@Tag("Performance")
 class FastArrayStackComparison {
     Random random = new Random();
 

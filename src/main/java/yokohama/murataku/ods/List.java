@@ -1,6 +1,6 @@
 package yokohama.murataku.ods;
 
-public interface List<T> extends HasCapacity , Queue<T> {
+public interface List<T> extends HasCapacity , Deque<T> {
     int size();
 
     T get(int i);
@@ -11,13 +11,19 @@ public interface List<T> extends HasCapacity , Queue<T> {
 
     T remove(int i);
 
-    @Override
-    default void enqueue(T t) {
-        this.add(size(), t);
+    default void enqueueHead(T t){
+        add(0,t);
     }
 
-    @Override
-    default T dequeue() {
-        return this.remove(0);
+    default void enqueueTail(T t){
+        add(size(), t);
+    }
+
+    default T dequeueHead(){
+        return remove(0);
+    }
+
+    default T dequeueTail(){
+        return remove(size() -1);
     }
 }

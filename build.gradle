@@ -21,7 +21,18 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags 'Performance'
+    }
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+task perfTest(type: Test) {
+    useJUnitPlatform {
+        includeTags 'Performance'
+    }
     testLogging {
         events "passed", "skipped", "failed"
     }

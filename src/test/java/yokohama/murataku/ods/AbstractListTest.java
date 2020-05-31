@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-interface AbstractListTest extends AbstractQueueTest {
-     <T> List<T> newSut();
+interface AbstractListTest extends AbstractQueueTest, DequeTest {
+    <T> List<T> newSut();
 
     @Test
     default void testSetWhenEmpty() {

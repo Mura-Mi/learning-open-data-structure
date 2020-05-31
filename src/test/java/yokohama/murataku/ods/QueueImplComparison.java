@@ -1,7 +1,9 @@
 package yokohama.murataku.ods;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+@Tag("Performance")
 class QueueImplComparison {
     void scenario(Queue<Integer> sut) {
         for (int i = 0; i < 300_000; i++) {
