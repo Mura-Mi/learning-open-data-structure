@@ -14,7 +14,7 @@ class Node<T> {
     }
 }
 
-public class SLList<T> implements List<T>, Stack<T> {
+public class SLList<T> implements List<T>, Stack<T>, HasReverse<T> {
     private Node<T> head;
     private Node<T> tail;
 
@@ -115,6 +115,7 @@ public class SLList<T> implements List<T>, Stack<T> {
         }
     }
 
+    @Override
     public void reverse() {
         Node<T> zero = null;
         var actHead = this.head;

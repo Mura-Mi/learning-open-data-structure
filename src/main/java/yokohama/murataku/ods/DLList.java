@@ -14,9 +14,15 @@ class DLNode<T> {
         this.prev = prev;
         this.next = next;
     }
+
+    void swap() {
+        var tmp = next;
+        this.next = prev;
+        this.prev = tmp;
+    }
 }
 
-public class DLList<T> implements List<T>, Stack<T> {
+public class DLList<T> implements List<T>, Stack<T>, HasReverse<T> {
     private final DLNode<T> dummy;
 
     private static <T> DLNode<T> buildDummy() {
@@ -109,5 +115,17 @@ public class DLList<T> implements List<T>, Stack<T> {
     @Override
     public T pop() {
         return this.dequeueHead();
+    }
+
+    @Override
+    public void reverse() {
+        var node = this.head;
+        while (true) {
+            node.swap();
+            if (node == dummy) break;
+            node = node.prev;
+        }
+        this.head = dummy.next;
+        this.tail = dummy.prev;
     }
 }
