@@ -114,4 +114,23 @@ public class SLList<T> implements List<T>, Stack<T> {
             this.tail = newNode;
         }
     }
+
+    public void reverse() {
+        Node<T> zero = null;
+        var actHead = this.head;
+        var actTail = this.tail;
+
+        var one = actHead;
+        Node<T> two;
+        while (one != null) {
+            two = one.next;
+            one.next = zero;
+            //'
+            zero = one;
+            one = two;
+        }
+
+        this.head = actTail;
+        this.tail = actHead;
+    }
 }
