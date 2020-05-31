@@ -10,10 +10,10 @@ public interface Deque<T> extends Queue<T> {
     T dequeueTail();
 
     default void enqueue(T t) {
-        enqueueHead(t);
+        enqueueTail(t);
     }
 
     default T dequeue() {
-        return dequeueTail();
+        return dequeueHead();
     }
 }

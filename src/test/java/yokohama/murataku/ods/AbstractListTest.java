@@ -1,28 +1,12 @@
 package yokohama.murataku.ods;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 interface AbstractListTest extends AbstractQueueTest, DequeTest {
     <T> List<T> newSut();
-
-    @Test
-    default void testSetWhenEmpty() {
-        List<Character> stack = newSut();
-
-        assertThat(stack.size()).isEqualTo(0);
-
-        Character ret = stack.set(0, 'c');
-        assertThat(ret).isNull();
-        assertThat(stack.size()).isEqualTo(1);
-
-        assertThat(stack.set(0, 'b')).isEqualTo('c');
-        assertThat(stack.size()).isEqualTo(1);
-
-        stack.set(1, 'a');
-        assertThat(stack.size()).isEqualTo(2);
-    }
 
     @Test
     default void testAdd() {
