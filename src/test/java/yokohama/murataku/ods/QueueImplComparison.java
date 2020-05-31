@@ -43,5 +43,13 @@ class QueueImplComparison {
             );
             System.out.printf("Queue capacity: %,d\n", arrayQueue.capacity());
         }
+
+        {
+            var linkedListQueue = new SLList<Integer>();
+            StopwatchUtil.measure("LinkedList: ", () ->
+                    scenario(linkedListQueue)
+            );
+            System.out.printf("LinkedList capacity: %,d\n", linkedListQueue.capacity());
+        }
     }
 }

@@ -64,24 +64,28 @@ public class SLList<T> implements List<T>, Stack<T> {
     @Override
     public void add(int i, T t) {
         var pair = getNodeAndPrev(i);
-        var newNode = new Node<>(t, pair.two());
+        var existing = pair.two();
+        var newNode = new Node<>(t, existing);
         if (pair.one() != null) {
             pair.one().next = newNode;
         } else {
             this.head = newNode;
         }
+        if (pair.two() == null) this.tail = newNode;
     }
 
     @Override
     public T remove(int i) {
         var pair = getNodeAndPrev(i);
-        if (pair.one() == null && pair.two() == null) return null;
+        var toBeRemoved = pair.two();
+        if (pair.one() == null && toBeRemoved == null) return null;
         if (pair.one() != null) {
-            pair.one().next = pair.two().next;
+            pair.one().next = toBeRemoved.next;
         } else {
             this.head = pair.two().next;
         }
-        return pair.two().ref;
+        if (toBeRemoved.next == null) this.tail = pair.one();
+        return toBeRemoved.ref;
     }
 
     @Override
@@ -97,5 +101,17 @@ public class SLList<T> implements List<T>, Stack<T> {
     @Override
     public T pop() {
         return this.dequeueHead();
+    }
+
+    @Override
+    public void enqueueTail(T t) {
+        var newNode = new Node<>(t);
+        if (this.tail != null) {
+            this.tail.next = newNode;
+            this.tail = newNode;
+        } else {
+            this.head = newNode;
+            this.tail = newNode;
+        }
     }
 }
