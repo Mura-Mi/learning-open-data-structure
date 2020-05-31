@@ -1,9 +1,14 @@
 package yokohama.murataku.ods;
 
-class ArrayStackTest extends AbstractArrayStackTest {
+class ArrayStackTest implements AbstractListTest {
 
     @Override
-    protected <T> AbstractArrayStack<T> newSut() {
+    public <T> AbstractArrayStack<T> newSut() {
         return new ArrayStack<>();
+    }
+
+    @Override
+    public <T> Queue<T> newSut(int capacity) {
+        return new ArrayStack<>(capacity);
     }
 }

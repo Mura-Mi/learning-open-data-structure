@@ -66,16 +66,6 @@ public abstract class AbstractArrayStack<T> implements List<T>, Queue<T> {
                 '}';
     }
 
-    @Override
-    public void enqueue(T t) {
-        this.add(size, t);
-    }
-
-    @Override
-    public T dequeue() {
-        return this.remove(0);
-    }
-
     @Override public int capacity() {
         return this.array.length;
     }

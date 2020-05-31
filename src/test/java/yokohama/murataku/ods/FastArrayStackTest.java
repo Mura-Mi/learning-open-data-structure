@@ -1,11 +1,14 @@
 package yokohama.murataku.ods;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class FastArrayStackTest extends AbstractArrayStackTest {
+class FastArrayStackTest implements AbstractListTest {
 
     @Override
-    protected <T> AbstractArrayStack<T> newSut() {
+    public <T> AbstractArrayStack<T> newSut() {
         return new FastArrayStack<>();
+    }
+
+    @Override
+    public <T> Queue<T> newSut(int capacity) {
+        return new FastArrayStack<>(capacity);
     }
 }

@@ -11,6 +11,10 @@ public class ArrayStack<T> extends AbstractArrayStack<T> {
         super();
     }
 
+    public ArrayStack(int capacity) {
+        super(capacity);
+    }
+
     @Override
     protected void resizeIfNecessary() {
         int capacity = array.length;
