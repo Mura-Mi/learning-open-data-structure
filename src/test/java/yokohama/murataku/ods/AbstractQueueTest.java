@@ -8,7 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 interface AbstractQueueTest {
     <T> Queue<T> newSut();
 
-    <T> Queue<T> newSut(int capacity);
+    /**
+     * Ensure given capacity IF POSSIBLE
+     */
+    default <T> Queue<T> newSut(int capacity) {
+        return newSut();
+    }
 
     @Test
     default void testQueueSimple() {
