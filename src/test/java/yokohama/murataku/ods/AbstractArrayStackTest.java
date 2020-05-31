@@ -4,8 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("SpellCheckingInspection")
 abstract class AbstractArrayStackTest {
-    protected abstract List<Character> newSut();
+    protected abstract <T> AbstractArrayStack<T> newSut();
 
     @Test
     void testSetWhenEmpty() {
@@ -66,5 +67,39 @@ abstract class AbstractArrayStackTest {
         assertThat(stack.size()).isEqualTo(2);
         assertThat(stack.get(1)).isEqualTo('c');
         assertThat(stack.get(0)).isEqualTo('a');
+    }
+
+    @Test
+    void testAsQueue() {
+        Queue<String> queue = newSut();
+        queue.enqueue("Takuro");
+        queue.enqueue("Haru");
+        queue.enqueue("Takanori");
+        queue.enqueue("Rose");
+        queue.enqueue("Komada");
+        queue.enqueue("Saeki");
+        queue.enqueue("Shindo");
+        queue.enqueue("Tanishige");
+        queue.enqueue("Nomura");
+        queue.enqueue("Takashi");
+        queue.enqueue("Miura");
+        queue.enqueue("Kawamura");
+        queue.enqueue("Awano");
+        queue.enqueue("Sasaki");
+       
+        assertThat(queue.dequeue()).isEqualTo("Takuro");
+        assertThat(queue.dequeue()).isEqualTo("Haru");
+        assertThat(queue.dequeue()).isEqualTo("Takanori");
+        assertThat(queue.dequeue()).isEqualTo("Rose");
+        assertThat(queue.dequeue()).isEqualTo("Komada");
+        assertThat(queue.dequeue()).isEqualTo("Saeki");
+        assertThat(queue.dequeue()).isEqualTo("Shindo");
+        assertThat(queue.dequeue()).isEqualTo("Tanishige");
+        assertThat(queue.dequeue()).isEqualTo("Nomura");
+        assertThat(queue.dequeue()).isEqualTo("Takashi");
+        assertThat(queue.dequeue()).isEqualTo("Miura");
+        assertThat(queue.dequeue()).isEqualTo("Kawamura");
+        assertThat(queue.dequeue()).isEqualTo("Awano");
+        assertThat(queue.dequeue()).isEqualTo("Sasaki");
     }
 }

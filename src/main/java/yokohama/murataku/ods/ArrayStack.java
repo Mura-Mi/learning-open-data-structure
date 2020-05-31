@@ -3,8 +3,6 @@ package yokohama.murataku.ods;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-
 @SuppressWarnings({"ManualArrayCopy", "unchecked"})
 public class ArrayStack<T> extends AbstractArrayStack<T> {
     public static final Logger logger = LoggerFactory.getLogger(ArrayStack.class);
@@ -41,5 +39,4 @@ public class ArrayStack<T> extends AbstractArrayStack<T> {
         }
 
     }
-
 }

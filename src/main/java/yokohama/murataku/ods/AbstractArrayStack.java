@@ -3,7 +3,7 @@ package yokohama.murataku.ods;
 import java.util.Arrays;
 
 @SuppressWarnings({"unchecked", "ManualArrayCopy"})
-public abstract class AbstractArrayStack<T> implements List<T> {
+public abstract class AbstractArrayStack<T> implements List<T>, Queue<T> {
     protected T[] array;
     protected int size;
 
@@ -59,6 +59,16 @@ public abstract class AbstractArrayStack<T> implements List<T> {
                 "array=" + Arrays.toString(array) +
                 ", size=" + size +
                 '}';
+    }
+
+    @Override
+    public void enqueue(T t) {
+        this.add(size, t);
+    }
+
+    @Override
+    public T dequeue() {
+        return this.remove(0);
     }
 
     protected abstract void resizeIfNecessary();
