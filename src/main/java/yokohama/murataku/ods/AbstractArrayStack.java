@@ -8,7 +8,11 @@ public abstract class AbstractArrayStack<T> implements List<T>, Queue<T> {
     protected int size;
 
     protected AbstractArrayStack() {
-        this.array = (T[]) new Object[10];
+        this(10);
+    }
+
+    protected AbstractArrayStack(int initialCapacity) {
+        this.array = (T[]) new Object[initialCapacity];
         this.size = 0;
     }
 
@@ -44,6 +48,7 @@ public abstract class AbstractArrayStack<T> implements List<T>, Queue<T> {
 
     @Override
     public T remove(int i) {
+        if(size() == 0) return null;
         T prev = array[i];
         for (int j = i; j < size; j++) {
             array[j] = array[j + 1];
@@ -69,6 +74,10 @@ public abstract class AbstractArrayStack<T> implements List<T>, Queue<T> {
     @Override
     public T dequeue() {
         return this.remove(0);
+    }
+
+    @Override public int capacity() {
+        return this.array.length;
     }
 
     protected abstract void resizeIfNecessary();

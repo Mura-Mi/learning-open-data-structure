@@ -1,6 +1,6 @@
 package yokohama.murataku.ods;
 
-public interface List<T> {
+public interface List<T> extends HasCapacity {
     int size();
 
     T get(int i);

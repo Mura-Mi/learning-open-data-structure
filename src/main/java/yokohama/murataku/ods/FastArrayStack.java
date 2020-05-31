@@ -8,7 +8,10 @@ public class FastArrayStack<T> extends AbstractArrayStack<T> {
     public static final Logger logger = LoggerFactory.getLogger(FastArrayStack.class);
 
     public FastArrayStack() {
-        super();
+    }
+
+    public FastArrayStack(int initCap) {
+        super(initCap);
     }
 
     @Override
@@ -21,6 +24,7 @@ public class FastArrayStack<T> extends AbstractArrayStack<T> {
 
     @Override
     public T remove(int i) {
+        if (size() == 0) return null;
         T prev = array[i];
         if (size - i >= 0) System.arraycopy(array, i + 1, array, i, size - i);
         array[size - 1] = null;
