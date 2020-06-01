@@ -22,7 +22,10 @@ class SkipListSSetTest {
         sut.add(5);
         assertThat(sut.size()).isEqualTo(5);
 
-
+        assertThat(sut.find(0)).isEqualTo(0);
+        assertThat(sut.find(4)).isEqualTo(5);
+        assertThat(sut.find(5)).isEqualTo(5);
+        assertThat(sut.find(6)).isNull();
     }
 
 
